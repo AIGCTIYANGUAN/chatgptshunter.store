@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="a1d5c1125d61f48eb727c2b6842a90d15ec822f7" content="a1d5c1125d61f48eb727c2b6842a90d15ec822f7" />
+    <link rel="stylesheet" href="//cdn.tsyndicate.com/sdk/v1/interstitial.ts.css" />
+    <script src="//cdn.tsyndicate.com/sdk/v1/interstitial.ts.js"></script>
+    <script>
+       InterstitialTsAd({
+            spot: "6da6d069a0784132a782cdaa0d302969",
+            extid: "{extid}",
+       });
+    </script>
     <title>登录注册表单</title>
     <style>
         body {
@@ -83,6 +91,58 @@
 
 <script data-cfasync='false' src='//wwr.antskre.com/?tag=340deacc'></script>
 <script type="text/javascript" src="//cdn.tsyndicate.com/sdk/v1/bi.js" data-ts-spot="ed0040e8dc3b4f3c9267d0a03335ace7" data-ts-width="300" data-ts-height="250" data-ts-extid="{extid}" async defer></script>
-
+<script src="//cdn.tsyndicate.com/sdk/v1/push.notification.js"></script>
+<link type="text/css" rel="stylesheet" href="//cdn.tsyndicate.com/sdk/v1/push.notification.css">
+<script>
+   TSPushNotification({
+       spot: "d870e7e48b884196bf005e6e37266a80",
+       content: {
+           body: "Tap Allow to subscribe and receive updates from us",
+           btnYes: "Yes",
+           btnNo: "No",
+       },
+       style: {
+           body: {
+               backgroundColor: "#ffffff",
+               color: "#000000"
+           },
+           btnYes: {
+               backgroundColor: "#1caadc"
+           },
+           btnNo: {
+               color: "#1caadc"
+           },
+       },
+   });
+</script>
+<script src="//cdn.tsyndicate.com/sdk/v1/inpage.push.js"></script>
+<script>
+   TsInPagePush({
+       spot: "989b8ee6caf74f67a0cea06fc66711aa",
+       verticalPosition: "bottom",
+   });
+</script>
+<script src="//cdn.tsyndicate.com/sdk/v1/exit.popup.js"></script>
+<script>
+   ExitPopupAd({
+        spot: "0f9d2cb689df43f89bb167e176bbfd89",
+        type: "img-left",
+        cols: 3,
+        rows: 1,
+        title: "Suggested for you",
+        width: "50%",
+        cookieExpires: "3",
+        adsByPosition: "bottom-right",
+        extid: "{extid}",
+	styles: {
+		"container": {
+			"width": "900px",
+			"height": "90px",
+			"overflow": "hidden"
+		}
+	}
+   });
+</script>
+<script type="text/javascript" src="//cdn.tsyndicate.com/sdk/v1/p.js" data-ts-spot="7688569aa14c40a8aa3ea4b136d1b099" data-ts-extid="{extid}" async defer></script>
 </body>
 </html>
