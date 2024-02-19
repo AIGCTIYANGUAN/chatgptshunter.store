@@ -1,148 +1,303 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="a1d5c1125d61f48eb727c2b6842a90d15ec822f7" content="a1d5c1125d61f48eb727c2b6842a90d15ec822f7" />
-    <link rel="stylesheet" href="//cdn.tsyndicate.com/sdk/v1/interstitial.ts.css" />
-    <script src="//cdn.tsyndicate.com/sdk/v1/interstitial.ts.js"></script>
-    <script>
-       InterstitialTsAd({
-            spot: "6da6d069a0784132a782cdaa0d302969",
-            extid: "{extid}",
-       });
-    </script>
-    <title>登录注册表单</title>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>App Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            padding: 10px;
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Assuming a dark background for contrast */
+            color: #ffffff; /* setting font color to white */
+            margin: 0; /* Reset default margin */
         }
-        .form-container {
-            background-color: #fff;
-            padding: 20px;
-            margin: 0 auto;
-            width: 300px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            text-align: center;
-        }
-        form {
+        .nav-brand {
             display: flex;
-            flex-direction: column;
+            align-items: center;
         }
-        input[type="text"],
-        input[type="password"] {
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+
+        .nav-brand span {
+            color: #ffffff; /* White color for brand text */
         }
-        button {
-            padding: 10px;
-            border: none;
-            background-color: #5cb85c;
-            color: white;
-            border-radius: 5px;
+
+        .nav-icons img {
+            height: 32px;
+            width: 32px;
+            object-fit: contain;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tab {
+            padding: 8px 16px;
             cursor: pointer;
-        }
-        button:hover {
-            background-color: #4cae4c;
-        }
-        .switch-form {
+            border-radius: 9999px;
+            transition: background-color 0.3s, color 0.3s;
+            margin: 2px;
+            flex: 1 0 calc(100% / 13 - 2px);
             text-align: center;
-            margin-top: 15px;
+            box-sizing: border-box;
+            font-weight: 700;
+            color: #ffffff; /* White color for tabs */
         }
-        .switch-form a {
+
+        .tabs-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tab:not(.active) {
+            background-color: transparent;
+            color: #ffffff; /* White color for non-active tabs */
+        }
+
+        .tab.active {
+            background-color: #FF8C00;
+            color: white;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            height: 120px;
+            overflow: hidden;
+            flex: 1;
+            color: #ffffff; /* White color for card text */
+        }
+
+        .card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 16px;
+        }
+
+        .card p {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-link {
             text-decoration: none;
-            color: #5cb85c;
+            color: inherit; /* Inherits white color */
+        }
+
+        #cards {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 0.25rem 0.5rem; /* 设置上下内边距为 0.5rem，左右内边距为 1rem */
+            border: none;
+            box-shadow: none;
+            position: fixed;
+            top: 1px;
+            left: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        /* 对小屏幕设备的样式调整 */
+        @media (max-width: 1280px) {
+            .tabs-container,#cards {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        /* 对中等屏幕设备的样式调整 */
+        @media (min-width: 1281px) and (max-width: 1312px) {
+            .tabs-container,#cards {
+                padding-left: 3rem;
+                padding-right: 3rem;
+            }
+        }
+
+        /* 对大屏幕设备的样式调整 */
+        @media (min-width: 1313px) {
+            .tabs-container,#cards {
+                padding-left: 5rem;
+                padding-right: 5rem;
+            }
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 60px auto 15px;
+            width: 100%;
+        }
+
+        #search-input {
+            width: calc(100% - 20px); /* 输入框宽度为容器宽度减去内边距 */
+            padding: 10px; /* 内边距10px */
+            border: 1px solid #FF8C00; /* 边框颜色 */
+            font-size: 16px; /* 字体大小16px */
+            color: #000000; /* 文本颜色黑色 */
+            background-color: #ffffff; /* 背景颜色白色 */
+            border-radius: 20px; /* 圆角大小 */
+            margin: 0 auto; /* 左右自动边距用于居中 */
+        }
+
+        /* 媒体查询保证对齐 */
+        @media (max-width: 768px) {
+            .search-container {
+                padding-left: 2rem; /* 这应与 .tabs-container 和 #cards 的 padding 相同 */
+                padding-right: 2rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .search-container {
+                padding-left: 5rem; /* 这应与 .tabs-container 和 #cards 的 padding 相同 */
+                padding-right: 5rem;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .search-container {
+                padding-left: 15rem; /* 这应与 .tabs-container 和 #cards 的 padding 相同 */
+                padding-right: 15rem;
+            }
+        }
+
+        /* 卡片内标题样式 */
+        .card h4 {
+            color: #0000FF; /* 标题文字颜色修改为标准蓝色 */
+            font-weight: bold; /* 字体加粗 */
+            margin: 0 0 6px 0; /* 上下外边距设为0，底部外边距设为6px */
+        }
+
+        /* 鼠标悬停时卡片标题高亮显示为橙色 */
+        .card:hover h4 {
+            color: #ffa500;
         }
     </style>
+
 </head>
-<body>
+<body class="bg-gray-900 text-gray-100">
+<div class="container mx-auto px-4 py-6">
+    <nav class="nav-container bg-gray-900 text-gray-100 flex justify-between items-center p-4">
+        <div class="flex-1 flex items-center">
+            <a href="https://wwp.antskre.com/redirect-zone/37d27b95">
+                <img src="image/LogoGPT.png" alt="GPTs Store Logo" class="h-10 mr-6"/>
+            </a>
+            <a href="https://wwp.antskre.com/redirect-zone/37d27b95">
+                <span class="font-bold transform scale-150">GPTs Store</span>
+            </a>
+        </div>
 
-<div class="form-container">
-    <h2>登录</h2>
-    <form id="loginForm">
-        <input type="text" id="loginUsername" placeholder="用户名" required>
-        <input type="password" id="loginPassword" placeholder="密码" required>
-        <button type="submit">登录</button>
-    </form>
-    <div class="switch-form">
-        没有账号？<a href="#" onclick="switchForm('register')">注册一个</a>
+        <div class="flex-1 flex justify-end space-x-4">
+            <a href="https://wwp.antskre.com/redirect-zone/37d27b95" target="_blank">
+                <img src="image/wechat_2.png" alt="Wend a coffeeChat" class="h-6 rounded-md"/>
+            </a>
+            <a href="https://wwp.antskre.com/redirect-zone/37d27b95" target="_blank">
+                <img src="image/ChatGPT.png" alt="ChatGPT" class="h-6 rounded-md"/>
+            </a>
+            <a href="https://wwp.antskre.com/redirect-zone/37d27b95" target="_blank">
+                <img src="image/Coffee.jpeg" alt="Buy me a Coffee" class="h-6 rounded-md"/>
+            </a>
+        </div>
+    </nav>
+
+    <!-- 搜索容器 -->
+    <div class="search-container flex justify-center mx-auto">
+        <!-- 搜索框容器 -->
+        <div class="flex-1">
+            <input type="text" id="search-input" placeholder="Enter to search..." class="w-full p-2 rounded-full text-black">
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="flex justify-between items-center mb-6">
+        <div class="tabs-container" id="navButtons">
+            <div onclick="showCards('Leaderboard', this)" class="tab active" id="Leaderboard">排行榜</div>
+            <div onclick="showCards('Marketing', this)" class="tab" id="Marketing">营销</div>
+            <div onclick="showCards('News', this)" class="tab" id="News">新闻</div>
+            <div onclick="showCards('Finance', this)" class="tab" id="Finance">金融</div>
+            <div onclick="showCards('Sales', this)" class="tab" id="Sales">销售</div>
+            <div onclick="showCards('Business', this)" class="tab" id="Business">商业</div>
+            <div onclick="showCards('Creative', this)" class="tab" id="Creative">创意</div>
+            <div onclick="showCards('Social', this)" class="tab" id="Social">社交</div>
+            <div onclick="showCards('Entertainment', this)" class="tab" id="Entertainment">娱乐</div>
+            <div onclick="showCards('Food', this)" class="tab" id="Food">美食</div>
+            <div onclick="showCards('Management', this)" class="tab" id="Management">管理</div>
+            <div onclick="showCards('Developer', this)" class="tab" id="Developer">开发者</div>
+            <div onclick="showCards('Trending', this)" class="tab" id="Trending">热门</div>
+            <div onclick="showCards('Health', this)" class="tab" id="Health">健康</div>
+            <div onclick="showCards('Design', this)" class="tab" id="Design">设计</div>
+            <div onclick="showCards('Game', this)" class="tab" id="Game">游戏</div>
+            <div onclick="showCards('Education', this)" class="tab" id="Education">教育</div>
+            <div onclick="showCards('Story', this)" class="tab" id="Story">故事</div>
+            <div onclick="showCards('Coaching', this)" class="tab" id="Coaching">辅导</div>
+            <div onclick="showCards('Companion', this)" class="tab" id="Companion">伴侣</div>
+            <div onclick="showCards('Kids', this)" class="tab" id="Kids">儿童</div>
+            <div onclick="showCards('Travel', this)" class="tab" id="Travel">旅行</div>
+            <div onclick="showCards('Enterprise', this)" class="tab" id="Enterprise">企业</div>
+            <div onclick="showCards('Productivity', this)" class="tab" id="Productivity">通用类</div>
+        </div>
+    </nav>
+
+    <!-- App Cards -->
+    <div id="cards" class="grid grid-cols-3 gap-6">
+        <a href="https://wwp.antskre.com/redirect-zone/37d27b95" target="_blank" class="card-link">
+            <div class="card search-result bg-white rounded-lg shadow p-4 flex items-center">
+                <img alt="Profile image" src="https://assistanthunt.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fassistant-hunt.appspot.com%2Fassistants%252Fprofile_pictures%252Fthumbs%252F864979c0-322a-4db9-9783-16e9c95cf38f_192x192.png&w=64&q=75" />
+                <div class="flex-grow">
+                    <div class="flex justify-between items-center">
+                        <h4>Cosmic Dream</h4>
+                    </div>
+                    <p class="text-gray-600">Visionary painter of digital wonder</p>
+                </div>
+            </div>
+        </a>
+        <a href="https://wwp.antskre.com/redirect-zone/37d27b95" target="_blank" class="card-link">
+            <div class="card search-result bg-white rounded-lg shadow p-4 flex items-center">
+                <img alt="Profile image" src="https://assistanthunt.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fassistant-hunt.appspot.com%2Fassistants%252Fprofile_pictures%252Fthumbs%252Fb20e9aaf-04fe-4cf6-8080-38e91a010060_192x192.png&w=64&q=75" />
+                <div class="flex-grow">
+                    <div class="flex justify-between items-center">
+                        <h4>Data Analysis</h4>
+                    </div>
+                    <p class="text-gray-600">Drop in any files and I can help analyze and visualize your data</p>
+                </div>
+            </div>
+        </a>
+        <a href="https://wwp.antskre.com/redirect-zone/37d27b95" target="_blank" class="card-link">
+            <div class="card search-result bg-white rounded-lg shadow p-4 flex items-center">
+                <img alt="Profile image" src="https://assistanthunt.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fassistant-hunt.appspot.com%2Fassistants%252Fprofile_pictures%252Fthumbs%252F698dbf3f-078b-46e7-9d6d-2fab02c50c0c_192x192.png&w=64&q=75" />
+                <div class="flex-grow">
+                    <div class="flex justify-between items-center">
+                        <h4>Canva</h4>
+                    </div>
+                    <p class="text-gray-600">Effortlessly design anything: presentations, logos, social media posts and more.</p>
+                </div>
+            </div>
+        </a>
     </div>
 </div>
-
-<div class="form-container" style="display: none;">
-    <h2>注册</h2>
-    <form id="registerForm">
-        <input type="text" id="registerUsername" placeholder="用户名" required>
-        <input type="password" id="registerPassword" placeholder="密码" required>
-        <input type="password" id="registerConfirmPassword" placeholder="确认密码" required>
-        <button type="submit">注册</button>
-    </form>
-    <div class="switch-form">
-        已有账号？<a href="#" onclick="switchForm('login')">登录</a>
-    </div>
-</div>
-
 
 <script data-cfasync='false' src='//wwr.antskre.com/?tag=340deacc'></script>
-<script type="text/javascript" src="//cdn.tsyndicate.com/sdk/v1/bi.js" data-ts-spot="ed0040e8dc3b4f3c9267d0a03335ace7" data-ts-width="300" data-ts-height="250" data-ts-extid="{extid}" async defer></script>
-<script src="//cdn.tsyndicate.com/sdk/v1/push.notification.js"></script>
-<link type="text/css" rel="stylesheet" href="//cdn.tsyndicate.com/sdk/v1/push.notification.css">
-<script>
-   TSPushNotification({
-       spot: "d870e7e48b884196bf005e6e37266a80",
-       content: {
-           body: "Tap Allow to subscribe and receive updates from us",
-           btnYes: "Yes",
-           btnNo: "No",
-       },
-       style: {
-           body: {
-               backgroundColor: "#ffffff",
-               color: "#000000"
-           },
-           btnYes: {
-               backgroundColor: "#1caadc"
-           },
-           btnNo: {
-               color: "#1caadc"
-           },
-       },
-   });
-</script>
-<script src="//cdn.tsyndicate.com/sdk/v1/inpage.push.js"></script>
-<script>
-   TsInPagePush({
-       spot: "989b8ee6caf74f67a0cea06fc66711aa",
-       verticalPosition: "bottom",
-   });
-</script>
-<script src="//cdn.tsyndicate.com/sdk/v1/exit.popup.js"></script>
-<script>
-   ExitPopupAd({
-        spot: "0f9d2cb689df43f89bb167e176bbfd89",
-        type: "img-left",
-        cols: 3,
-        rows: 1,
-        title: "Suggested for you",
-        width: "50%",
-        cookieExpires: "3",
-        adsByPosition: "bottom-right",
-        extid: "{extid}",
-	styles: {
-		"container": {
-			"width": "900px",
-			"height": "90px",
-			"overflow": "hidden"
-		}
-	}
-   });
-</script>
-<script type="text/javascript" src="//cdn.tsyndicate.com/sdk/v1/p.js" data-ts-spot="7688569aa14c40a8aa3ea4b136d1b099" data-ts-extid="{extid}" async defer></script>
+
 </body>
 </html>
