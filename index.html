@@ -1,1 +1,98 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/chatgptshunter.store/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Web site created using create-react-app"/><link rel="apple-touch-icon" href="/chatgptshunter.store/logo192.png"/><link rel="manifest" href="/chatgptshunter.store/manifest.json"/><title>React App</title><link href="/chatgptshunter.store/static/css/main.435d5fe5.chunk.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script>!function(c){function e(e){for(var t,r,n=e[0],o=e[1],u=e[2],i=0,a=[];i<n.length;i++)r=n[i],f[r]&&a.push(f[r][0]),f[r]=0;for(t in o)Object.prototype.hasOwnProperty.call(o,t)&&(c[t]=o[t]);for(d&&d(e);a.length;)a.shift()();return p.push.apply(p,u||[]),l()}function l(){for(var e,t=0;t<p.length;t++){for(var r=p[t],n=!0,o=1;o<r.length;o++){var u=r[o];0!==f[u]&&(n=!1)}n&&(p.splice(t--,1),e=s(s.s=r[0]))}return e}var r={},f={1:0},p=[];function s(e){if(r[e])return r[e].exports;var t=r[e]={i:e,l:!1,exports:{}};return c[e].call(t.exports,t,t.exports,s),t.l=!0,t.exports}s.e=function(u){var e=[],r=f[u];if(0!==r)if(r)e.push(r[2]);else{var t=new Promise(function(e,t){r=f[u]=[e,t]});e.push(r[2]=t);var n,i=document.createElement("script");i.charset="utf-8",i.timeout=120,s.nc&&i.setAttribute("nonce",s.nc),i.src=s.p+"static/js/"+({}[u]||u)+"."+{3:"a29efab2"}[u]+".chunk.js",n=function(e){i.onerror=i.onload=null,clearTimeout(a);var t=f[u];if(0!==t){if(t){var r=e&&("load"===e.type?"missing":e.type),n=e&&e.target&&e.target.src,o=new Error("Loading chunk "+u+" failed.\n("+r+": "+n+")");o.type=r,o.request=n,t[1](o)}f[u]=void 0}};var a=setTimeout(function(){n({type:"timeout",target:i})},12e4);i.onerror=i.onload=n,document.head.appendChild(i)}return Promise.all(e)},s.m=c,s.c=r,s.d=function(e,t,r){s.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},s.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},s.t=function(t,e){if(1&e&&(t=s(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(s.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var n in t)s.d(r,n,function(e){return t[e]}.bind(null,n));return r},s.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return s.d(t,"a",t),t},s.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},s.p="/chatgptshunter.store/",s.oe=function(e){throw console.error(e),e};var t=window.webpackJsonp=window.webpackJsonp||[],n=t.push.bind(t);t.push=e,t=t.slice();for(var o=0;o<t.length;o++)e(t[o]);var d=n;l()}([])</script><script src="/chatgptshunter.store/static/js/2.a71b1702.chunk.js"></script><script src="/chatgptshunter.store/static/js/main.01b01939.chunk.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录注册表单</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 10px;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            margin: 0 auto;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            background-color: #5cb85c;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        .switch-form {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .switch-form a {
+            text-decoration: none;
+            color: #5cb85c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>登录</h2>
+    <form id="loginForm">
+        <input type="text" id="loginUsername" placeholder="用户名" required>
+        <input type="password" id="loginPassword" placeholder="密码" required>
+        <button type="submit">登录</button>
+    </form>
+    <div class="switch-form">
+        没有账号？<a href="#" onclick="switchForm('register')">注册一个</a>
+    </div>
+</div>
+
+<div class="form-container" style="display: none;">
+    <h2>注册</h2>
+    <form id="registerForm">
+        <input type="text" id="registerUsername" placeholder="用户名" required>
+        <input type="password" id="registerPassword" placeholder="密码" required>
+        <input type="password" id="registerConfirmPassword" placeholder="确认密码" required>
+        <button type="submit">注册</button>
+    </form>
+    <div class="switch-form">
+        已有账号？<a href="#" onclick="switchForm('login')">登录</a>
+    </div>
+</div>
+
+<script>
+    function switchForm(form) {
+        var loginForm = document.getElementById('loginForm').parentElement;
+        var registerForm = document.getElementById('registerForm').parentElement;
+
+        if (form === 'register') {
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block';
+        } else {
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+        }
+    }
+</script>
+
+</body>
+</html>
